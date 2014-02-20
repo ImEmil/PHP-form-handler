@@ -28,6 +28,17 @@ So why is this better?
 		}
 	?>
 	
+	<form method="post">
+	
+		<input type="text" name="postname" placeholder="Name">
+		<input type="email" name="postemail" placeholder="Email">
+		
+		<button name="submitbtn" type="submit">Skicka</button>
+		<!-- Pay   ^^^^^^  attention to the button name -->
+		
+	</form>
+
+==================================================
 (2) Using the form handler
 	<?php
 		require_once("path/class.formhandler.php);
