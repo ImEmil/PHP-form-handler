@@ -27,16 +27,6 @@ So why is this better?
 			echo "<p> {$name} </p> \n\t <p> {$email} </p>";
 		}
 	?>
-	
-	<form method="post">
-	
-		<input type="text" name="postname" placeholder="Name">
-		<input type="email" name="postemail" placeholder="Email">
-		
-		<button name="submitbtn" type="submit">Skicka</button>
-		<!-- Pay   ^^^^^^  attention to the button name -->
-		
-	</form>
 
 ==================================================
 (2) Using the form handler
@@ -52,6 +42,8 @@ So why is this better?
 		}
 
 	?>
+===================================================
+And the form looks like this:
 
 	<form method="post">
 	
