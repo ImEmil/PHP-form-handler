@@ -1,0 +1,52 @@
+<?php
+	spl_autoload_register( function($class) {
+		require_once("classes/class.{$class}.php");
+	});
+	/*
+						[[[[[[[[ PLEASE NOTE!!! ]]]]]]]]
+	If you are using an older version than 5.1.2 i suggest you to remove the following function:
+	spl_autoload_register( function($class) {
+		require_once("classes/class.{$class}.php");
+	});
+
+	and replace it with this: require_once("classes/class.formhandler.php");
+	*/
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<title> Form Controller v1 </title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	
+</head>
+<body>
+	
+	<main>
+
+	<?php
+	
+		$form = new formHandler("post", "submitbtn");
+		
+		if($form->submit())
+		{
+			$values = $form->store( array("name", "email") )->required(true);
+			$form->output();
+		}
+
+	?>
+
+	<form method="post">
+	
+		<input type="text" name="name" placeholder="Name">
+		<input type="email" name="email" placeholder="Email">
+		
+		<button name="submitbtn" type="submit">Skicka</button>
+		
+	</form>
+
+</main>
+
+</body>
+</html>
