@@ -3,7 +3,7 @@
 # FORMHANDLER CLASS (START)
 class formHandler {
 
-	public $method = [], $name = '', $stored = array();
+	public $method = array(), $name = '', $stored = array();
 
 	# START OF FUNCTIONS 
 
