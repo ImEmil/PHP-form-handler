@@ -51,7 +51,7 @@ class formHandler {
 		foreach($this->stored as $display)
 		{
 			print(sprintf("<p> %s </p> \n\t", $display));
-			// use var_dump(display); for debug purpose, you can also use echo $display OR print_r($display)
+			// use var_dump($display); for debug purpose, you can also use echo $display OR print_r($display)
 		}
 	}
 
