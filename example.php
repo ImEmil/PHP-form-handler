@@ -27,11 +27,13 @@
 
 	<?php
 	
-		$form = new formHandler("post", "submitbtn");
+		$form = new formHandler("post", "submitbtn");	// Form METHOD, button name
 		
 		if($form->submit())
 		{
-			$values = $form->store( array("name", "email") )->required(true);
+			$values = $form->store( array("postname", "postemail") )->required(true);
+			//			        input name, input name
+			
 			$form->output();
 		}
 
@@ -39,10 +41,11 @@
 
 	<form method="post">
 	
-		<input type="text" name="name" placeholder="Name">
-		<input type="email" name="email" placeholder="Email">
+		<input type="text" name="postname" placeholder="Name">
+		<input type="email" name="postemail" placeholder="Email">
 		
 		<button name="submitbtn" type="submit">Skicka</button>
+		<!-- Pay   ^^^^^^  attention to the button name -->
 		
 	</form>
 
