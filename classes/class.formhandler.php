@@ -10,7 +10,8 @@
 
 
 # FORMHANDLER CLASS (START)
-class formHandler {
+
+class formHandler /* extends Whatever */ {
 
 	public $method = array(), $name = '', $stored = array();
 
