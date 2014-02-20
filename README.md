@@ -30,6 +30,7 @@ So why is this better?
 
 ==================================================
 (2) Using the form handler
+
 	<?php
 		require_once("path/class.formhandler.php);
 		
