@@ -51,7 +51,7 @@ And the form looks like this:
 		<input type="text" name="postname" placeholder="Name">
 		<input type="email" name="postemail" placeholder="Email">
 		
-		<button name="submitbtn" type="submit">Skicka</button>
+		<button name="submitbtn" type="submit"> Im done! </button>
 		<!-- Pay   ^^^^^^  attention to the button name -->
 		
 	</form>
