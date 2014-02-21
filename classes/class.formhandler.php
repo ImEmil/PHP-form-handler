@@ -7,16 +7,14 @@
                                          
 */
 
+# FormHandler Class START
+class formHandler {
+	
+	const invalidMSG = "<div class=\"error\"> Some data was invalid! </div>";
 
-
-# FORMHANDLER CLASS (START)
-
-class formHandler /* extends Whatever */ {
-
-	public $method = array(), $name = '', $stored = array();
+	public $method = array(), $name = '', $stored = array(), $data = array();
 
 	# START OF FUNCTIONS 
-
 	public function __construct($method, $name)
 	{
 		$this->name = $name;
@@ -31,7 +29,7 @@ class formHandler /* extends Whatever */ {
 			$this->method = $_POST;
 		}
 	}
-	
+
 	public static function refresh($url, $delay)
 	{
 		return "<meta http-equiv=\"refresh\" content=\"{$delay};url={$url}\"> \n\t";
@@ -51,9 +49,19 @@ class formHandler /* extends Whatever */ {
 	{
 		foreach($this->stored as $display)
 		{
-			print(sprintf("<p> %s </p> \n\t", $display));
-			// use var_dump($display); for debug purpose, you can also use echo $display OR print_r($display)
+			print(sprintf("<p> %s </p> \n\t", formHandler::filter($display)));
+			// use var_dump(display); for debug purpose, you can also use echo $display OR print_r($display)
 		}
+	}
+
+	public function prepare()
+	{
+		foreach($this->stored as $val => $data)
+		{
+			$this->data[] = formHandler::filter($data);
+		}
+
+		return $this->data;
 	}
 
 	public function required($bool)
@@ -77,6 +85,8 @@ class formHandler /* extends Whatever */ {
 		{
 			exit(self::refresh($_SERVER['HTTP_REFERER'], 2) . $e->getMessage());
 		}
+
+		return $this;
 	}
 
 	public function store($var)
@@ -84,6 +94,24 @@ class formHandler /* extends Whatever */ {
 		foreach($var as $val)
 		{
 			$this->stored[$val] = formHandler::filter($this->method[$val]);
+		}
+		return $this;
+	}
+
+	final function isEmail($email)
+	{
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			exit(self::refresh($_SERVER['HTTP_REFERER'], 2) . self::invalidMSG);
+		}
+		return $this;
+	}
+
+	final function isNumeric($number)
+	{
+		if(!is_numeric($number))
+		{
+			exit(self::refresh($_SERVER['HTTP_REFERER'], 2) . self::invalidMSG);
 		}
 		return $this;
 	}
