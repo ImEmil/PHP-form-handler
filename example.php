@@ -41,12 +41,11 @@
 		
 		if($form->submit())
 		{
-			$values = $form->store( array("postname", "postemail") )->required(true);
+			$values = $form->store( array("postname", "postemail") )->required(true); # ->prepare();
 			//			        input name, input name
-			
+			$form->isEmail($values[1]); // This will check if the second value in the array is an valid email
 			$form->output();
 		}
-
 	?>
 
 	<form method="post">
